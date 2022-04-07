@@ -1,0 +1,15 @@
+# Opening this to Web Url(In future)
+apiVersion: v1
+kind: Service
+metadata:
+  name: cis-service
+spec:
+  selector:
+    app: companyinformationservice
+  type: NodePort
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8100
+      targetPort: 8080 # This port need to be listened and accessed to external service.
+      nodePort: 32221

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cis-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: companyinformationservice
+        env:  
+        - name: SPRING_PROFILES_ACTIVE
+          value: SPRINGPROFILESACTIVE
+        - name: SPRING_PROFILES_SERVER_TYPE
+          value: background
+        - name: KEYVAULTSERVICE_URL
+          value: kvs.qa21.indopus.in
+        - name: APP_DOMAIN
+          value: APPDOMAIN
+        - name: DOMAIN
+          value: indopus.in
+        - name: SPRING_APPLICATION_NAME
+          value: companyinformationservice
+

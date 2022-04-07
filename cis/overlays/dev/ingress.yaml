@@ -1,0 +1,19 @@
+#The configuration in this file would be common as the request are routed through nginx
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata: # These properties would remain same as they are served through nginx
+  annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+      kubernetes.io/ingress.class: nginx
+      # nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+      # nginx.ingress.kubernetes.io/ssl-passthrough: “true”
+  name: agency-application-service-ingress
+spec:
+  rules:
+    - host: agency22preview.dc22k8s-apps.hcm.ondemand.com
+      http:
+        paths:
+          - backend:
+              serviceName: agency-service
+              servicePort: 8080
+            path: /
