@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       port: 8096
       targetPort: 8080 # This port need to be listened and accessed to external service.
-      nodePort: 32221
+      nodePort: 32222
