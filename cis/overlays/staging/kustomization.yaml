@@ -3,6 +3,18 @@ kind: Kustomization
 commonLabels:
    env: staging
    app: companyinformationservice
+
+configMapGenerator:
+- name: cis-cm
+  literals:
+  - spring.data.mongodb.database=indopus
+  - spring.data.mongodb.host=indopus.in
+  - spring.data.mongodb.port=27017
+  - spring.data.mongodb.authentication-database=admin
+  - probe42.base.url=https://api.probe42.in/probe_lite/companies/
+  - masterIndia.base_uri = https://commonapi.mastersindia.co
+  - masterIndia.userName = ankur@bizongo.in
+  - insta_url=https://instafinancials.com/api
 resources:
   - ./ingress.yaml
 patchesStrategicMerge:
