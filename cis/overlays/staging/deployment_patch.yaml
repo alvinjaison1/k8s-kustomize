@@ -16,7 +16,7 @@ spec:
         - name: KEYVAULTSERVICE_URL
           value: kvs.qa21.indopus.in
         - name: APP_DOMAIN
-          value: APPDOMAIN
+          value: 172.20.70.224
         - name: DOMAIN
           value: indopus.in
         - name: SPRING_APPLICATION_NAME
