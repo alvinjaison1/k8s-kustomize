@@ -1,38 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: agency-svc-ops-deployment
+  name: cis-deployment
 spec:
-  replicas: 2
+  replicas: 1
   template:
     spec:
       containers:
-      - name: agency-app-service
-        env:
-        # For Vault
-        - name: VAULT_K8S_ROLEIDS_LIST
-          value: rcm_agency_principal
-        - name: VAULT_JWT_TOKEN_PATH
-          value: /var/run/secrets/kubernetes.io/serviceaccount/token
-        - name: VAULT_AUTH_METHOD
-          value: token
-        - name: VAULT_URL
-          value: 'https://vault.dc022.sf.priv'
-        - name: VAULT_NAMESPACE_PREFIX
-          value: dc22-stage-           # Make sure you add ending hyphen
-        - name: VAULT_SECRETS_CRUD_POLICY
-          value: idl-vault-secrets-crud
-        - name: VAULT_IS_ADMIN
-          value: 'false'
-        - name: VAULT_CACERT_PATH
-          value: /vault/tls/vault_ca.crt # check the name of the vault certificate of the vault-tls secret
-        - name: VAULT_PROVIDER
-          value: hashicorp
-        volumeMounts:
-        - mountPath: /vault/tls
-          name: vault-tls
-      volumes:
-        - name: vault-tls
-          secret:
-            secretName: vault-tls
-
+      - name: companyinformationservice
+        env:  
+        - name: SPRING_PROFILES_ACTIVE
+          value: SPRINGPROFILESACTIVE
+        - name: SPRING_PROFILES_SERVER_TYPE
+          value: background
+        - name: KEYVAULTSERVICE_URL
+          value: kvs.qa21.indopus.in
+        - name: APP_DOMAIN
+          value: 172.20.70.224
+        - name: DOMAIN
+          value: indopus.in
+        - name: SPRING_APPLICATION_NAME
+          value: companyinformationservice

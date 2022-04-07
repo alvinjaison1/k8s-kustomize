@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cis-deployment
+  name: cs-deployment
 spec:
   replicas: 1
   template:
     spec:
       containers:
-      - name: companyinformationservice
+      - name: configurationservice
         env:  
         - name: SPRING_PROFILES_ACTIVE
           value: SPRINGPROFILESACTIVE
@@ -20,4 +20,5 @@ spec:
         - name: DOMAIN
           value: indopus.in
         - name: SPRING_APPLICATION_NAME
-          value: companyinformationservice
+          value: configurationservice
+
