@@ -1,5 +1,5 @@
 #The configuration in this file would be common as the request are routed through nginx
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata: # These properties would remain same as they are served through nginx
   annotations:
@@ -10,10 +10,16 @@ metadata: # These properties would remain same as they are served through nginx
   name: cis-ingress
 spec:
   rules:
-    - host: 
+    - host: cis-stage.indopus.in
       http:
         paths:
-          - backend:
-              serviceName: cis-service
-              servicePort: 8080
-            path: /
+          - path: /
+            pathType: Prefix
+            backend:
+               service:
+                name: cis-service
+                port: 
+                 number: 8080
+        
+           
+         
